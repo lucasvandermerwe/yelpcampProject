@@ -1,0 +1,46 @@
+<% include ../partials/header %>
+
+
+   <div style="display:none" class="alert alert-warning" role="alert">
+   </div>  
+
+       <div class="row justify-content-center">
+             <div class="col-md-12  text-center">
+         <h1>Edit <%= campground.name.charAt(0).toUpperCase() + campground.name.slice(1,campground.name.length) %></h1> 
+        </div>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+            <form id="editCampground" action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST" enctype="multipart/form-data">       <div class="form-group">
+                <label for="name">Name:</label>
+                    <input id="name" class="form-control" type="text" name="campground[name]" value="<%= campground.name %>">
+                </div>
+                 <div class="form-group">
+                    <label for="imageUrl">Image</label>
+                    <input id="imageUrl" type="file" id="image" name="image" accept="image/*" required>
+                </div>
+                <div class="form-group">
+                <label for="price">Price:</label>
+                    <input id="price" class="form-control" type="number" step="10" min="10" name="campground[price]" value="<%= campground.price %>">  
+                </div>
+                <div class="form-group">
+                <label for="description">Description:</label>
+                    <input id="description" class="form-control" type="text" name="campground[description]" value="<%= campground.description %>">
+                </div>
+                <div class="form-group">
+                   <label for="location">Location</label>
+                     <input id="location" class="form-control" type="text" name="campground[location]" id="location" value="<%= campground.location %>">
+                   </div>
+                <hr>
+                <div class="form-group">
+                    <button id="editCampgroundButton" class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+             <div class="form-signin">
+                <a href="/campgrounds">Go Back</a>  
+            </div>
+        </div>
+      </div>
+
+
+
+<% include ../partials/footer %>
+

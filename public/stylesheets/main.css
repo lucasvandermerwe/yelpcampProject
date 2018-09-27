@@ -1,0 +1,193 @@
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .checkbox {
+    font-weight: 400;
+}
+
+.form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
+
+/* Thumbnail styles */
+
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+
+/* Google Map styles */
+
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+
+/* Campground show page delete button */
+
+#delete-form {
+    display: inline-block;
+}
+
+.delete-form {
+    display: inline;
+}
+
+
+/*  liked button */
+
+.buttonNormal {
+    font-size: 1.5em;
+    width: 10px;
+    /* margin: 0 auto; */
+    display: block;
+    padding-top: 7px;
+}
+
+.likedButton {
+    padding-top: 7px;
+    color: red;
+    font-size: 1.5em;
+    width: 10px;
+    /* margin: 0 auto; */
+    display: block;
+}
+
+
+/* Modal Styling - no search results */
+
+div.screenCover {
+    background-color: rgba(219, 221, 224, 0.5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+}
+
+div.myModal {
+    border: 1px solid black;
+    width: 410px;
+    height: 190px;
+    margin: 180px auto;
+    border: 1px solid black;
+    background-color: #eee;
+    border-radius: 15px 15px 15px 15px;
+    text-align: center;
+    box-shadow: 16px 14px 21px 7px rgba(0, 0, 0, 0.66);
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -ms-border-radius: 15px 15px 15px 15px;
+    -o-border-radius: 15px 15px 15px 15px;
+}
+
+#closeModal {
+    margin-left: 3px;
+}
+
+#modalInput {
+    margin-left: 7%;
+    width: 50%;
+}
+
+#modalForm {
+    width: 90%;
+    padding-top: 5%;
+}
+
+
+/* Bootstrap alerts - frontend form validation */
+
+div.alert.alert-warning {
+    display: none;
+}
+
+
+/* fontawesom chekbox */
+
+#newsletterCheckboxChecked {
+    display: none;
+    color: #007bff;
+}
+
+
+/* actual checkbox, hidden in the background */
+
+#newsletter {
+    display: none;
+}
+
+
+/* rating / review */
+
+.checked {
+    color: orange;
+}
+
+.reviewDivShowPage {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}

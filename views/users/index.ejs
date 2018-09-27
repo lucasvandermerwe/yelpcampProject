@@ -1,0 +1,45 @@
+<% include ../partials/header %> 
+
+<div class="container">
+   
+ <div class="container">
+     <header class="jumbotron">
+         <div class="container">
+             <h1>Welcome To YelpCamp!</h1>
+             <p>View our hand-picked campgrounds from all over the world</p>
+             <a class="btn btn-primary" href="/campgrounds">Go to Campgrounds Index</a>
+         </div>
+     </header>  
+
+       <% if(!currentUser) { %>
+       <div class="container">
+         <p>Sorry, you have to login in to view User index</p>
+         <a class="btn btn-primary btn-xs" href="/login">Login page</a>   
+       </div>
+      <% } %>
+
+     
+     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+       <% if(currentUser && users.length > 0) { %>
+         <% users.forEach(function(user){ %>
+               <div class="col-md-3 col-sm-6">
+                  <div class="thumbnail">
+                  <img src="<%= user.avatar.url %>">
+                    <div class="caption">
+                        <h4><%= user.username.charAt(0).toUpperCase() + user.username.slice(1,user.username.length) %></h4>
+                       <% if(user.description) { %>
+                            <p><%= user.description.slice(1,90) %>...</p>
+                       <% } %>            
+                    </div>
+                    <p>
+                        <a href="/users/<%= user._id %>" class="btn btn-primary">More Info</a>
+                    </p>
+                </div>
+            </div>
+          <% }); %>
+       <% } %>
+    </div>
+</div>
+
+
+<% include ../partials/footer %> 

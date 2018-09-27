@@ -1,0 +1,21 @@
+{
+  "name": "public",
+  "authors": [
+    "albert <albertusvdmerwe@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "slick-carousel": "^1.8.1"
+  }
+}

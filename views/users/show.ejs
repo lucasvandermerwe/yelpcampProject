@@ -1,0 +1,64 @@
+<% include ../partials/header %>
+
+
+
+<% var name = user.firstname[0].toUpperCase() + user.firstname.substring(1,user.firstname.length)   %>
+  
+
+   <div class="row">
+      <div class="col-md-7 col-sm-7 col-7">      
+        <div class="card" style="margin-bottom:5%">
+          <div class="card-body">             
+            <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                     <img id="userAvatar" style="width:100%" src="<%= user.avatar.url %>">  
+                  </div>
+                  <div class="col-md-12">
+                  <hr>
+                      <h4>User Details:</h4>
+                      <h5>Name: <%= name + " " + user.surname %></h5>
+                      <p>email: <a class="caption" href="mailto:<%= user.email %>"><%= user.email %></a></p>                      
+                        <% if(currentUser && currentUser._id.equals(user._id)) { %>
+                           <a class="btn btn-secondary btn-xs" href="/users/<%= user._id %>/edit">Edit profile</a>
+                           <hr>
+                           <a class="btn btn-danger" href="/users/<%= user._id %>/deactivate?deactivate=true">Deactivate</a>
+                       <% } %>
+                       
+                  </div>
+            </div>
+        </div>
+           <div class="card-body">
+              <%  if(user.description) { %>
+               <h4>Description:</h4>
+               <p><%= user.description %></p>    
+               <% } %>
+           </div>
+        </div>
+     </div>
+     <div class="col-md-3 col-sm-3 col-3">
+            
+
+                <% if(campgrounds.length > 0) { %>
+                <div class="card-body">
+                 <h4>Campgrounds submitted by <%= name %></h4>     
+                      <% campgrounds.slice(0,3).forEach(function(campground) { %>
+                 <li style="list-style:none"><a href="/campgrounds/<%= campground._id %>"><%= campground.name.charAt(0).toUpperCase() + campground.name.slice(1,campground.name.length) %></a></li>
+                <% }) %>               
+           <% } %>
+           </div>
+
+
+<div class="card-body">
+ <h4>Campgrounds liked by <%= name %></h4>   
+ 
+<% user.liked.forEach(function(liked) { %>
+<li style="list-style:none"><a href="/campgrounds/<%= liked.id %>"><%= liked.name.charAt(0).toUpperCase() + liked.name.slice(1,liked.name.length) %></a></li>
+<% }) %>
+
+
+</div>
+      
+      </div>
+  </div>
+
+<% include ../partials/footer %>

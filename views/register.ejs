@@ -1,0 +1,44 @@
+<% include ./partials/header %> 
+
+   <div class="alert alert-warning" role="alert">
+   </div>  
+
+<div class="row">
+   <div class="col-md-12"> 
+        <form class="form-signin" id="userSignUp" action="/register" method="post" enctype="multipart/form-data">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
+            <label for="username">Username:</label>
+                <input id="username" class="form-control" type="text" name="username" placeholder="username">    
+            <label for="password">Password:</label>
+                <input id="password" class="form-control" type="password" name="password" placeholder="password">   
+            <label for="firstname">First Name:</label>
+                <input id="firstName" class="form-control" type="text" name="firstname" placeholder="first name">   
+            <label for="surname">Surname:</label>
+                <input id="surname" class="form-control" type="text" name="surname" placeholder="surname">     
+            <label for="email">Email:</label>
+               <input id="email" class="form-control" name="email" placeholder="email address">      
+            <div class="form-group">
+              <label for="image">Avatar:</label>
+                 <input id="image" type="file" name="image" accept="image/*" required>   
+            </div>
+              <label for="description">Please describe yourself: (optional)</label>
+                 <textarea id="description" name="description" class="form-control" style="resize:none"></textarea>    
+              <label for="admin">Admin: (optional)</label>
+                 <input id="admin" class="form-control" type="text" name="admin" placeholder="administrator">   
+                <hr>
+                 <i id="newsletterCheckbox" class="far fa-square"></i><i id="newsletterCheckboxChecked" class="far fa-check-square"></i><span> Add me to YelpCamp's mailing list.</span>
+                 <hr>
+                 <div>
+                   <input type="checkbox" id="newsletter" name="acceptnewsletter"
+                      value="true"/>
+                 </div>
+               <button id="signUpButton" class="btn btn-primary btn-block" type="submit">Sign Up</button>
+            </form> 
+             </div>
+          <div class="form-signin">
+              <a href="/campgrounds">Go Back</a>              
+          </div>
+    </div>
+</div>
+
+<% include ./partials/footer %> 

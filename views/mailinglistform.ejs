@@ -1,0 +1,28 @@
+<% include ./partials/header %>
+
+   <div style="display:none" class="alert alert-warning" role="alert">
+   </div>  
+
+       <div class="row justify-content-center">
+             <div class="col-md-12  text-center">
+                 <h3>Please compose your message:</h3>                
+             </div>
+             <form style="width:100%" id="editCampground" action="/users/mailinglist" method="POST">
+                   <div class="form-group">
+                      <input style="width:90%; margin:0 auto" class="form-control" type="text" name="subject" placeholder="Subject...">
+                   </div>
+                   <textarea style="width:90%; height:400px;margin:0 auto;display:block" 
+                             class="form-control" name="email" placeholder="Please type your message..."></textarea>
+                    <hr style="width:90%">
+                    <button style="width:90%; display:block;margin:0 auto" id="submitEmail" class="btn btn-primary btn-block">Submit!</button>
+            </form>  
+        </div>
+
+    
+<% include ./partials/footer %>
+
+
+
+
+
+
