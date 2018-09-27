@@ -74,12 +74,12 @@ app.get("/*", function(req, res) {
     res.redirect("/");
 });
 
-var port = 2200;
+// var port = 2200;
 
-app.listen(port, function() {
+// // app.listen(port, function() {
+// //     console.log('YelpCamp Server has started');
+// // });
+
+app.listen(process.env.PORT, process.env.IP, function() {
     console.log('YelpCamp Server has started');
 });
-
-// app.listen(process.env.PORT, process.env.IP, function() {
-//     console.log('YelpCamp Server has started');
-// });
