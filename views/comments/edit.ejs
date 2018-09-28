@@ -1,7 +1,5 @@
 <% include ../partials/header %>
 
-   <div class="alert alert-warning" role="alert">
-   </div>  
 
     <div class="row justify-content-center">
           <div class="col-md-12 text-center">
@@ -11,7 +9,7 @@
              <form id="editComment" action="/campgrounds/<%= campground_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
                  <div class="form-group">
                     <label for="CommentText">Comment Text:</label>
-                      <input id="commentText" class="form-control" type="text" name="comment[text]" value="<%= comment.text %>">
+                      <input id="commentText" class="form-control" type="text" name="comment[text]" value="<%= comment.text %>" minlength="2" required>
                  </div>
                  <hr>
                   <div class="form-group">

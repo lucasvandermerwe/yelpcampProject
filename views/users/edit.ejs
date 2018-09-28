@@ -1,8 +1,5 @@
 <% include ../partials/header %> 
 
-   <div class="alert alert-warning" role="alert">
-   </div>  
-
        <div class="row justify-content-center">       
              <div class="col-md-12  text-center">
          <h1>Hi <%= user.firstname.charAt(0).toUpperCase() + user.firstname.slice(1,user.firstname.length) %>, Please update your information</h1> 
@@ -10,28 +7,28 @@
         <div class="col-xs-12 col-md-6 col-lg-4">
       <form id="userUpdate" action="/users/<%= user._id %>?_method=PUT" method="post" enctype="multipart/form-data">
        <div class="form-group">
-       <label for="firstname">First Name:</label>
-         <input id="firstName" class="form-control" type="text" name="user[firstname]" value="<%= user.firstname %>">  
+       <label for="firstname"></label>
+         <input id="firstName" class="form-control" type="text" name="user[firstname]" value="<%= user.firstname %>" required>  
        </div>
        <div class="form-group">
-       <label for="surname">Surname:</label>
-         <input id="surname" class="form-control" type="text" name="user[surname]" value="<%= user.surname %>">        
+       <label for="surname"></label>
+         <input id="surname" class="form-control" type="text" name="user[surname]" value="<%= user.surname %>" required>        
        </div>
        <div class="form-group">
-       <label for="email">Email:</label>
-          <input id="email" class="form-control" type="email" name="user[email]" value="<%= user.email %>">        
+       <label for="email"></label>
+          <input id="email" class="form-control" type="email" name="user[email]" value="<%= user.email %>" required>        
        </div>
        <div class="form-group">
           <label for="image">Avatar:</label>
           <input id="image" type="file" name="image" accept="image/*" required>   
       </div>
        <div class="form-group">
-          <label for="description">Please describe yourself: (optional)</label>
-            <textarea id="description" name="user[description]" class="form-control" style="resize:none" placeholder="<%= user.description %>"></textarea>          
+          <label for="description"></label>
+            <textarea id="description" name="user[description]" class="form-control" style="resize:none" placeholder="please describe yourself: (optional)"></textarea>          
         </div>
         <div class="form-group">
-         <label for="admin">Become an Admin: (optional)</label>
-             <input id="admin" class="form-control" type="text" name="user[admin]" placeholder="administrator">   
+         <label for="admin"></label>
+             <input id="admin" class="form-control" type="text" name="user[admin]" placeholder="become an administrator (optional)">   
           </div>   
              <a class="btn btn-secondary btn-block" href="/forgot">Change My Password</a>
           <hr>
