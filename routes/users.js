@@ -121,15 +121,6 @@ function emailRoutine(req, res, user, emailBody, emailSubject) {
 
 
 
-
-
-
-
-
-
-
-
-
 //Show User: 
 router.get("/:id", middleware.fuzzySearch, function(req, res) {
 
@@ -167,11 +158,34 @@ router.get("/:id/edit", middleware.active, middleware.checkUserOwnership, middle
 
 //Update user
 router.put("/:id", middleware.active, middleware.checkUserOwnership, upload.single('image'), function(req, res) {
+    //backend validation of inputs 
+    req.check("user[firstname]", "First name is required").not().isEmpty();
+    req.check("user[surname]", "Surname is required").not().isEmpty();
+    req.check("user[email]", "Please provide a valid email address").isEmail();
+
+    var errors = req.validationErrors();
+
+    if (errors) {
+        req.session.errors = errors;
+        req.session.success = false;
+        req.flash("error", errors[0].msg);
+        return res.redirect("back");
+
+    }
+    //validate image
+    if (req.file === undefined) {
+        req.flash("error", "Image cannot be left blank");
+        return res.redirect("back");
+    }
+
+    req.session.success = true;
+
     User.findById(req.params.id, function(err, user) {
         if (err || !user) {
             req.flash("error", "Sorry, something went wrong, please try again.");
             res.redirect("back");
         } else {
+
             //Determine if new image or existing one already saved to user document
             if (user.avatar.name !== req.file.originalname) {
 
@@ -196,6 +210,7 @@ router.put("/:id", middleware.active, middleware.checkUserOwnership, upload.sing
                 //Update user
                 updateUser(req, res);
             }
+
         }
     });
 });

@@ -72,9 +72,28 @@ router.get("/", middleware.fuzzySearch, function(req, res) {
 });
 
 
-//
+
 //CREATE - add new campground to DB
 router.post("/", middleware.active, middleware.fuzzySearch, upload.single('image'), function(req, res) {
+    //backend validation
+    req.check("campground[name]", "Please provide campground name").not().isEmpty();
+    req.check("campground[price]", "Please provide price").not().isEmpty();
+    req.check("campground[description]", "Please provide a description").not().isEmpty();
+    req.check("campground[location]", "Please provide a location").not().isEmpty();
+
+    var errors = req.validationErrors();
+
+    if (errors) {
+        req.session.errors = errors;
+        req.session.success = false;
+        req.flash("error", errors[0].msg);
+        return res.redirect("back");
+    }
+
+    if (req.file === undefined) {
+        req.flash("error", "Image cannot be left blank");
+        return res.redirect("back");
+    }
 
     //upload image to cloudinary
     cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
@@ -142,6 +161,27 @@ router.get("/:id/edit", middleware.active, middleware.checkCampgroundOwnership, 
 
 // UPDATE CAMPGROUND ROUTE
 router.put("/:id", middleware.active, middleware.checkCampgroundOwnership, upload.single('image'), function(req, res) {
+    //backend validation
+    req.check("campground[name]", "Please provide campground name").not().isEmpty();
+    req.check("campground[price]", "Please provide price").not().isEmpty();
+    req.check("campground[description]", "Please provide a description").not().isEmpty();
+    req.check("campground[location]", "Please provide a location").not().isEmpty();
+
+    var errors = req.validationErrors();
+
+    if (errors) {
+        req.session.errors = errors;
+        req.session.success = false;
+        req.flash("error", errors[0].msg);
+        return res.redirect("back");
+    }
+
+    if (req.file === undefined) {
+        req.flash("error", "Image cannot be left blank");
+        return res.redirect("back");
+    }
+
+
 
     //protects our rating input from being manipulated
     delete req.body.campground.rating;
@@ -354,6 +394,10 @@ router.get("/:id/like", middleware.active, function(req, res) {
 
 
 
+
+
+
+module.exports = router;
 
 
 

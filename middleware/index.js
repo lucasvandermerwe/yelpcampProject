@@ -214,4 +214,25 @@ middlewareObj.isLoggedIn = function(req, res, next) {
     res.redirect("/login");
 };
 
+
+middlewareObj.validateLogin = function(req, res, next) {
+    req.check("username", "Please provide desired username").not().isEmpty();
+    req.check("password", "Password needs to me atleast 5 characters").isLength({ min: 5 });
+
+    var errors = req.validationErrors();
+
+    if (errors) {
+        req.session.errors = errors;
+        req.session.success = false;
+        req.flash("error", errors[0].msg);
+        res.redirect("back");
+
+    } else {
+        req.session.success = true;
+        next();
+    }
+
+}
+
+
 module.exports = middlewareObj;

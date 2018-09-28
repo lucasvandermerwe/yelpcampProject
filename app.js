@@ -3,6 +3,7 @@ require('dotenv').config();
 var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
+    expressValidator = require("express-validator"),
     session = require("express-session"),
     mongoose = require("mongoose"),
     flash = require("connect-flash"),
@@ -30,6 +31,7 @@ var url = process.env.DATABASEURL || "mongodb://localhost/yelpFinal"
 mongoose.connect(url);
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressValidator());
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
@@ -75,10 +77,10 @@ app.get("/*", function(req, res) {
 
 var port = 2200;
 
-// app.listen(port, function() {
-//     console.log('YelpCamp Server has started');
-// });
-
-app.listen(process.env.PORT, process.env.IP, function() {
+app.listen(port, function() {
     console.log('YelpCamp Server has started');
 });
+
+// app.listen(process.env.PORT, process.env.IP, function() {
+//     console.log('YelpCamp Server has started');
+// });

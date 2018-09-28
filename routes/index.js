@@ -8,6 +8,7 @@ var async = require("async");
 var nodemailer = require("nodemailer");
 var crypto = require("crypto");
 
+
 //Configure Multer and Cloudinary
 var multer = require('multer');
 var storage = multer.diskStorage({
@@ -44,6 +45,29 @@ router.get("/register", function(req, res) {
 
 //handle sign up logic
 router.post("/register", upload.single('image'), function(req, res) {
+    //backend validation of inputs 
+    req.check("username", "Please provide desired username").not().isEmpty();
+    req.check("password", "Password needs to me atleast 5 characters").isLength({ min: 5 }).equals(req.body.confirm_password);
+    req.check("firstname", "Please provide your first name").not().isEmpty();
+    req.check("surname", "Please provide your surname").not().isEmpty();
+    req.check("email", "Please provide a valid email address").isEmail();
+
+    var errors = req.validationErrors();
+
+    if (errors) {
+        req.session.errors = errors;
+        req.session.success = false;
+        req.flash("error", errors[0].msg);
+        return res.redirect("back");
+    }
+
+    if (req.file === undefined) {
+        req.flash("error", "Image cannot be left blank");
+        return res.redirect("back");
+    }
+
+    req.session.success = true;
+
     var newUser = new User({
         username: req.body.username,
         firstname: req.body.firstname,
@@ -83,6 +107,7 @@ router.post("/register", upload.single('image'), function(req, res) {
         //if avatar image not provided
         singUpRoutine(req, res, newUser);
     }
+
 });
 
 
@@ -138,11 +163,10 @@ function validateEmail(req, res, user) {
 //show login form
 router.get("/login", function(req, res) {
     res.render("login", { page: 'login' });
-
 });
 
 //handling login logic
-router.post("/login", middleware.reactivateUser, passport.authenticate("local", {
+router.post("/login", middleware.validateLogin, middleware.reactivateUser, passport.authenticate("local", {
     successRedirect: "/campgrounds",
     failureRedirect: "/login",
 }), function(req, res) {});

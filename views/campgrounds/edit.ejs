@@ -1,7 +1,6 @@
 <% include ../partials/header %>
 
 
-
        <div class="row justify-content-center">
              <div class="col-md-12  text-center">
          <h1>Edit <%= campground.name.charAt(0).toUpperCase() + campground.name.slice(1,campground.name.length) %></h1> 
@@ -10,7 +9,7 @@
             <form id="editCampground" action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name"></label>
-                    <input id="name" class="form-control" type="text" name="campground[name]" value="<%= campground.name %>" required>
+                    <input id="name" class="form-control" type="text" name="campground[name]" value="<%= campground.name %>"required minlength="3">
                 </div>
                  <div class="form-group">
                     <label for="imageUrl">Image</label>
