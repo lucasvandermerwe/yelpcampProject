@@ -169,8 +169,17 @@ div.alert.alert-warning {
 /* fontawesom chekbox */
 
 #newsletterCheckboxChecked {
+    font-size: 1.3em;
     display: none;
     color: #007bff;
+}
+
+#newsletterCheckbox {
+    font-size: 1.3em;
+}
+
+span#checkboxText {
+    padding-left: 5%;
 }
 
 
@@ -190,4 +199,12 @@ div.alert.alert-warning {
 .reviewDivShowPage {
     margin-top: 10%;
     margin-bottom: 10%;
+}
+
+
+/* error message, frontend validation  */
+
+.error {
+    padding-top: 3%;
+    color: red;
 }

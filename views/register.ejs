@@ -5,29 +5,47 @@
    <div class="col-md-12"> 
         <form class="form-signin" id="userSignUp" action="/register" method="post" enctype="multipart/form-data">
             <h1 class="h3 mb-3 font-weight-normal">Please sign up</h1>
-            <label for="username"></label>
-                <input id="username" class="form-control" type="text" name="username" placeholder="username" required>    
-            <label for="password"></label>
-                <input id="password" class="form-control" type="password" name="password" placeholder="password" required>   
-            <label for="confirm_password"></label>
-                <input id="confirm_password" class="form-control" type="password" name="confirm_password" placeholder="confirm password" required>
-            <label for="firstname"></label>
-                <input id="firstName" class="form-control" type="text" name="firstname" placeholder="first name" required>   
-            <label for="surname"></label>
-                <input id="surname" class="form-control" type="text" name="surname" placeholder="surname" required>     
-            <label for="email"></label>
-               <input id="email" class="form-control" type="email" name="email" placeholder="email address" required>      
+            <label for="username">USERNAME:</label>
+                <div class="form-group">
+                  <input id="username" class="form-control" type="text" name="username" placeholder="username" required>    
+                </div>
+            <label for="password">PASSWORD:</label>
             <div class="form-group">
-              <label for="image">Avatar:</label>
-                 <input id="image" type="file" name="image" accept="image/*" required>   
+               <input id="password" class="form-control" type="password" name="password" placeholder="password" required>           
             </div>
-              <label for="description"></label>
-                 <textarea id="description" name="description" class="form-control" style="resize:none" placeholder="Please describe yourself (optional)"></textarea>    
-              <label for="admin"></label>
-                 <input id="admin" class="form-control" type="text" name="admin" placeholder="become an administrator (optional)">   
-                <hr>
-                 <i id="newsletterCheckbox" class="far fa-square"></i><i id="newsletterCheckboxChecked" class="far fa-check-square"></i><span> Add me to YelpCamp's mailing list.</span>
-                 <hr>
+            <label for="confirm_password">CONFIRM PASSWORD:</label>
+                <div class="form-group">
+                  <input id="confirm_password" class="form-control" type="password" name="confirm_password" placeholder="confirm password" required>    
+                </div>                
+            <label for="firstname">FIRST NAME:</label>
+               <div class="form-group">
+                  <input id="firstName" class="form-control" type="text" name="firstname" placeholder="first name" required>    
+                </div>
+            <label for="surname">SURNAME:</label>
+                <div class="form-group">
+                  <input id="surname" class="form-control" type="text" name="surname" placeholder="surname" required>    
+                </div>
+                     
+            <label for="email">EMAIL:</label>
+               <div class="form-group">
+                  <input id="email" class="form-control" type="email" name="email" placeholder="email address" required>                    
+                </div>
+            <label for="image">AVATAR:</label>
+                <div class="form-group">
+                   <input id="image" type="file" name="image" accept="image/*" required>                   
+                </div>
+            <label for="description">DESCRIPTION:</label>
+               <div class="form-group">
+                   <textarea id="description" name="description" class="form-control" style="resize:none" placeholder="Please describe yourself (optional)"></textarea>   
+                </div>      
+              <label for="admin">BECOME ADMIN:</label>
+                <div class="form-group">
+                  <input id="admin" class="form-control" type="text" name="admin" placeholder="become an administrator (optional)">     
+                </div>                  
+                <div class="form-group">
+                  <i id="newsletterCheckbox" class="far fa-square"></i><i id="newsletterCheckboxChecked" class="far fa-check-square"></i><span id="checkboxText">Add me to YelpCamp's mailing list.</span>    
+                </div>
+                
                  <div>
                    <input type="checkbox" id="newsletter" name="acceptnewsletter"
                       value="true"/>

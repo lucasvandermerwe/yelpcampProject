@@ -8,23 +8,23 @@
         <div class="col-xs-12 col-md-6 col-lg-4">
             <form id="editCampground" action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="name"></label>
+                <label for="name">NAME:</label>
                     <input id="name" class="form-control" type="text" name="campground[name]" value="<%= campground.name %>"required minlength="3">
                 </div>
                  <div class="form-group">
-                    <label for="imageUrl">Image</label>
+                    <label for="imageUrl">IMAGE:</label>
                     <input id="imageUrl" type="file" id="image" name="image" accept="image/*" required>
                 </div>
                 <div class="form-group">
-                <label for="price">Price:</label>
+                <label for="price">PRICE:</label>
                     <input id="price" class="form-control" type="number" step="10" min="10" name="campground[price]" value="<%= campground.price %>" required>  
                 </div>
                 <div class="form-group">
-                <label for="description">Description:</label>
+                <label for="description">DESCRIPTION:</label>
                     <input id="description" class="form-control" type="text" name="campground[description]" value="<%= campground.description %>" required>
                 </div>
                 <div class="form-group">
-                   <label for="location">Location</label>
+                   <label for="location">LOCATION:</label>
                      <input id="location" class="form-control" type="text" name="campground[location]" id="location" value="<%= campground.location %>" required>
                    </div>
                 <hr>

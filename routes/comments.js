@@ -36,10 +36,12 @@ router.post("/", middleware.active, function(req, res) {
 
         //lookup campground using ID
         Campground.findById(req.params.id, function(err, campground) {
-            if (err || !campground || campground.length === 0) {
+            if (err || !campground) {
                 req.flash("err", "Sorry, something went wrong.")
                 res.redirect("back")
             } else {
+                // req.body.comment_sanitized = req.sanitize(req.body.comment.text);
+                //console.log(req.body);
                 Comment.create(req.body.comment, function(err, comment) {
                     if (err) {
                         req.flash("error", "Sorry, something went wrong");

@@ -5,6 +5,7 @@ var express = require("express"),
     bodyParser = require("body-parser"),
     expressValidator = require("express-validator"),
     session = require("express-session"),
+    expressSanitizer = require('express-sanitizer'),
     mongoose = require("mongoose"),
     flash = require("connect-flash"),
     passport = require("passport"),
@@ -31,6 +32,7 @@ var url = process.env.DATABASEURL || "mongodb://localhost/yelpFinal"
 mongoose.connect(url);
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressSanitizer());
 app.use(expressValidator());
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));

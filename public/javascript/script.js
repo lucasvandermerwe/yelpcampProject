@@ -9,6 +9,20 @@ function setBinds() {
 }
 
 function init() {
+    $.validator.setDefaults({
+        errorPlacement: function(error, element) {
+            error.appendTo(element.parent());
+        },
+        highlight: function(element) {
+            console.log(element);
+            $(element).closest(".form-group").addClass("was-validated");
+        },
+        unhighlight: function(element) {
+            console.log(element);
+            $(element).closest(".form-group").removeClass("was-validated");
+        }
+    });
+
     $("#newComment").validate();
     $("#editComment").validate();
     $("#userSignUp").validate({
@@ -38,6 +52,7 @@ function init() {
             image: "Please provide an avatar image",
             required: "Please a provide your password",
             password: {
+                required: "Please a provide your password",
                 minlength: "Password needs to be atleast 5 characters long"
             },
             confirm_password: {
