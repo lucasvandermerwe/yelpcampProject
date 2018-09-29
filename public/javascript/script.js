@@ -6,6 +6,9 @@ $(document).ready(function() {
 function setBinds() {
     $("#newsletterCheckbox").off("click").on("click", newsletterCheckboxChecked);
     $("#newsletterCheckboxChecked").off("click").on("click", newsletterCheckboxUnchecked);
+    $("#likeButton").off("click").on("click", like);
+    $("#unlikeButton").off("click").on("click", unlike);
+
 }
 
 function init() {

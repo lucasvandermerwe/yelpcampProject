@@ -380,8 +380,9 @@ router.get("/:id/like", middleware.active, function(req, res) {
                     } else {
                         user.liked.push(campgroundObj);
                         user.save();
-                        req.flash("success", "Campground Liked")
-                        res.redirect("back");
+                        res.json({ data: { currentUser: req.user, user: user, campground: campground } });
+                        // req.flash("success", "Campground Liked")
+                        // res.redirect("back");
                     }
                 });
             }

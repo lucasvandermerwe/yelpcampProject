@@ -35,10 +35,10 @@
                  <% } %>
 
                  <% if(currentUser && likedIndex === -1) { %>
-                    <a href="/campgrounds/<%= campground._id%>/like" class="btn btn-primary">Like</a>
+                    <a href="/campgrounds/<%= campground._id %>/like" data-campgroundid="<%= campground._id %>" id="likeButton" class="btn btn-primary">Like</a>
                  <% } else { %>
                  <%  if(currentUser) { %>
-                      <a href="/campgrounds/<%= campground._id%>/like" class="btn btn-secondary">Unlike</a> 
+                      <a href="/campgrounds/<%= campground._id%>/like" data-campgroundId="<%= campground._id %>" id="unlikeButton" class="btn btn-secondary">Unlike</a> 
                   <% } %>
                 <% } %>
 
